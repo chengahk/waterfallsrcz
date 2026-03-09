@@ -351,8 +351,8 @@ background:#f7f7f7;
 
 .contact-donate-container{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:40px;
+grid-template-columns:1fr;
+gap:30px;
 }
 
 .contact-box,
@@ -462,7 +462,7 @@ transform:translateY(0);
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:468px){
 
 .hero{
 min-height:70vh;
@@ -483,7 +483,7 @@ font-size:16px;
 
 }
 
-@media(max-width:768px){
+@media(max-width:468px){
 
 .menu-toggle{
 display:block;
@@ -558,4 +558,26 @@ background-image:url("images/gallery2.jpg");
 
 .slide:nth-child(3){
 background-image:url("images/gallery3.jpg");
+}
+
+img, iframe, video{
+max-width:100%;
+height:auto;
+}
+
+.container, 
+.container-column,
+.cards,
+.gallery-grid,
+.leader-grid,
+.stats-grid{
+width:100%;
+}
+
+body{
+overflow-x:hidden;
+}
+
+*{
+max-width:100%;
 }
