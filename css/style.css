@@ -54,12 +54,12 @@ gap:10px;
 }
 
 .logo img{
-height:55px;
+height:105px;
 }
 
 .church-name{
 font-size:20px;
-font-weight:600;
+font-weight:800;
 color:white;
 line-height:1.2;
 }
@@ -94,13 +94,13 @@ cursor:pointer;
 
 .hero{
 position:relative;
-min-height:180vh;
+min-height:130vh;
 display:flex;
-align-items:center;
+align-items:first baseline;
 justify-content:center;
 text-align:center;
 padding:20px;
-color:rgb(255, 255, 255);
+color:ghostwhite;
 overflow:hidden;
 
 }
@@ -163,7 +163,7 @@ max-width:800px;
 .leadership{
 padding:80px 20px;
 text-align:center;
-background:linear-gradient(#0f5a6b,#05bfdb)
+background:#ecedee
 }
 
 .ministries-preview,
@@ -193,7 +193,7 @@ background:#f4f7fa;
 background:#ffffff;
 padding:25px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.5);
+box-shadow:0 5px 15px rgba(0,0,0,1);
 transition:0.3s;
 color: #ebebeb;
   /* Gradient background */
@@ -393,7 +393,7 @@ margin-top:40px;
 background:#ffffff;
 padding:25px;
 border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.4);
+box-shadow:0 5px 10px rgba(0,0,0,0.5);
 }
 
 .leader-card img{
@@ -471,6 +471,8 @@ background:linear-gradient(135deg,#0f5a6b, #05bfdb);
 color:white;
 padding:25px;
 border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.8);
+
 }
 .stats{
 padding:80px 20px;
@@ -687,6 +689,7 @@ grid-template-columns:1fr 1fr;
 
 .footer-container{
 grid-template-columns:1fr;
+gap: 54px;
 text-align:center;
 }
 
@@ -699,7 +702,7 @@ text-align:center;
 display:inline-block;
 margin-top:20px;
 padding:12px 25px;
-background:#05bfdb;
+background:linear-gradient(#03539d,#0371d7);
 color:white;
 text-decoration:none;
 border-radius:6px;
@@ -709,7 +712,7 @@ transition:0.3s;
 
 .cta:hover,
 .view-leaders-btn:hover{
-background:#0499b0;
+background:linear-gradient(#000000, #041eb0)
 }
 
 .hero-content h1{
@@ -722,4 +725,94 @@ font-size:45px !important;
 
 .hero-content .motto{
 font-size:26px !important;
+}
+
+.hero-logo{
+width:150px;
+margin-bottom:20px;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+align-items:center;
+}
+
+nav ul li{
+list-style:none;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:16px;
+font-weight:600;
+letter-spacing:1px;
+text-transform:uppercase;
+position:relative;
+transition:color 0.3s ease;
+padding:5px 0;
+}
+
+/* Hover color */
+nav ul li a:hover{
+color:#d4af37;
+}
+
+/* Animated underline */
+nav ul li a::after{
+content:"";
+position:absolute;
+width:0%;
+height:2px;
+left:0;
+bottom:-5px;
+background:#d4af37;
+transition:width 0.3s ease;
+}
+
+nav ul li a:hover::after{
+width:100%;
+}
+
+.menu-toggle{
+display:none;
+flex-direction:column;
+cursor:pointer;
+gap:5px;
+}
+
+.menu-toggle span{
+width:28px;
+height:3px;
+background:white;
+display:block;
+}
+
+@media (max-width:768px){
+
+.menu-toggle{
+display:flex;
+}
+
+.nav-links{
+position:absolute;
+top:70px;
+right:0;
+background:#0d1b2a;
+width:220px;
+flex-direction:column;
+align-items:center;
+padding:20px 0;
+display:none;
+}
+
+.nav-links li{
+margin:15px 0;
+}
+
+.nav-links.active{
+display:flex;
+}
+
 }
