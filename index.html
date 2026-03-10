@@ -22,8 +22,8 @@
 
 <!-- Logo + Church Name -->
 <div class="logo">
-<img src="images/logo.png" alt="RCZ Logo">
-<span class="church-name">WATERFALLS CONGREGATION</span>
+<!--<img src="images/logo.png" alt="RCZ Logo">-->
+<span class="church-name">R.C.Z WATERFALLS <br> CONGREGATION</span>
 </div>
 
 <!-- Mobile Menu Button -->
@@ -48,7 +48,11 @@
 <li><a href="#location">Contact</a></li>
 
 </ul>
-
+<div class="menu-toggle">
+<span></span>
+<span></span>
+<span></span>
+</div>
 </nav>
 
 </div>
@@ -77,12 +81,17 @@ Announcements comming soon
 </div>
 
 <div class="hero-content fade">
+<img src="images/logo.png" class="hero-logo" alt="Church Logo">
 
 <h1>REFORMED CHURCH IN ZIMBABWE</h1>
 <br>
+<br>
+<br>
 <h2>WATERFALLS CONGREGATION</h2>
 <br>
+<br>
 <p class="motto">LET US RISE UP, BUILD AND STRENGTHEN OUR HANDS<BR>FOR THE WORK OF THE LORD</p>
+<br>
 <br>
 <a href="#welcome" class="cta">Discover Our Church</a>
 
@@ -243,7 +252,7 @@ allowfullscreen></iframe>
 <div class="lead-pastor">
 
 <div class="leader-card pastor-card">
-<img src="images/pastor.jpg">
+<img src="images/pastor.png">
 <br>
 <br>
 <br>
@@ -258,19 +267,19 @@ allowfullscreen></iframe>
 <div class="leader-grid">
 
 <div class="leader-card">
-<img src="images/rep1.jpg">
-<h3>Mr Musk</h3>
+<img src="images/rep1.jpeg">
+<h3>Mrs Musk</h3>
 <p>Council Secretary</p>
 </div>
 
 <div class="leader-card">
-<img src="images/rep2.jpg">
+<img src="images/rep2.jpeg">
 <h3>Mr Rog</h3>
 <p>Central Deacon</p>
 </div>
 
 <div class="leader-card">
-<img src="images/rep3.jpg">
+<img src="images/rep3.jpeg">
 <h3>Mrs Cutter</h3>
 <p>Mainway Gate 1 Rep</p>
 </div>
@@ -477,6 +486,15 @@ and serving our community.
 </div>
 
 </footer>
+<script>
 
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click", () => {
+navLinks.classList.toggle("active");
+});
+
+</script>
 </body>
 </html>
