@@ -40,7 +40,7 @@ text-align:center;
 /* HEADER */
 
 .header{
-background:#0f5a6b;
+background: linear-gradient(-192deg,#0f5a6b, #db6c05);
 padding:12px 0;
 position:sticky;
 top:0;
@@ -94,13 +94,13 @@ cursor:pointer;
 
 .hero{
 position:relative;
-min-height:90vh;
+min-height:180vh;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 padding:20px;
-color:white;
+color:rgb(255, 255, 255);
 overflow:hidden;
 
 }
@@ -158,11 +158,12 @@ max-width:800px;
 
 .welcome,
 .events,
+.k,
 .location,
 .leadership{
 padding:80px 20px;
 text-align:center;
-background:white;
+background:linear-gradient(#0f5a6b,#05bfdb)
 }
 
 .ministries-preview,
@@ -181,7 +182,7 @@ background:#f4f7fa;
   grid-template-columns: repeat(2, 1fr); /* always 2 cards per row */
   gap: 25px;
   margin-top: 20px;
-  max-width: 300px; /* wider so both cards fit */
+  max-width: 800px; /* wider so both cards fit */
   margin-left: auto;
   margin-right: auto;
 
@@ -196,7 +197,7 @@ box-shadow:0 5px 15px rgba(0,0,0,0.5);
 transition:0.3s;
 color: #ebebeb;
   /* Gradient background */
-  background: linear-gradient(135deg, #00065f, #0415ff);
+  background: linear-gradient(1135deg,#0f1a6b, #db9b05);
   padding: 20px; /* optional, to give spacing inside */
   border-radius: 12px; /* optional, for rounded corners */
 }
@@ -260,12 +261,12 @@ max-width:95%;
 }
 
 .hero h1{
-font-size:24px;
+font-size:78px;
 word-break:break-word;
 }
 
 .hero h2{
-font-size:18px;
+font-size:38px;
 word-break:break-word;
 }
 
@@ -327,19 +328,58 @@ transform:scale(1.05);
 .lead-pastor{
 display:flex;
 justify-content:center;
-margin-bottom:40px;
+align-items:center;
+width:100%;
+margin:60px 0;
 }
 
 .pastor-card{
-max-width:320px;
+width:420px;
+padding:40px 30px;
 text-align:center;
+background:#ffffff;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.18);
+margin:0 auto;
+position:relative;
+transition:transform 0.3s ease;
+}
+
+.pastor-card:hover{
+transform:translateY(-6px);
+}
+
+.pastor-card::before{
+content:"Congregation Pastor";
+position:absolute;
+top:-12px;
+left:50%;
+transform:translateX(-50%);
+background:#0d1b2a;
+color:white;
+padding:6px 16px;
+font-size:12px;
+border-radius:20px;
+letter-spacing:1px;
 }
 
 .pastor-card img{
-width:180px;
-height:180px;
-object-fit:cover;
+width:300px;
+height:300px;
 border-radius:50%;
+object-fit:cover;
+margin-bottom:20px;
+border:4px solid #ff590c;
+}
+
+.pastor-card h3{
+font-size:24px;
+margin-bottom:5px;
+}
+
+.pastor-card p{
+font-size:16px;
+line-height:1.6;
 }
 
 .leader-grid{
@@ -350,7 +390,7 @@ margin-top:40px;
 }
 
 .leader-card{
-background:#f4f7fa;
+background:#ffffff;
 padding:25px;
 border-radius:10px;
 box-shadow:0 5px 15px rgba(0,0,0,0.4);
@@ -361,6 +401,7 @@ width:120px;
 height:120px;
 object-fit:cover;
 border-radius:50%;
+
 }
 
 /* LIGHTBOX */
@@ -395,7 +436,7 @@ cursor:pointer;
 /* ANNOUNCEMENT BAR */
 
 .announcement-bar{
-background:#05bfdb;
+background: linear-gradient(187deg, #db6c05,#0f5a6b);
 color:white;
 overflow:hidden;
 white-space:nowrap;
@@ -426,10 +467,21 @@ margin-right:auto;
 }
 
 .stat{
-background:#0f5a6b;
+background:linear-gradient(135deg,#0f5a6b, #05bfdb);
 color:white;
 padding:25px;
 border-radius:10px;
+}
+.stats{
+padding:80px 20px;
+text-align:center;
+background:#f4f7fa;
+}
+
+.stats{
+padding:80px 20px;
+text-align:center;
+background:#f4f7fa;
 }
 
 .stat h3{
@@ -446,10 +498,11 @@ background:#f7f7f7;
 
 .contact-donate-container{
 display:grid;
-grid-template-columns:1fr;
+grid-template-columns:1fr 1fr;
 gap:30px;
+max-width:1100px;
+margin:auto;
 }
-
 .contact-box,
 .donate-box{
 background:white;
@@ -639,12 +692,34 @@ text-align:center;
 
 }
 
-.leadership-more{
-display:inline-block;
-margin-top:15px;
-padding:12px 25px;
-background:#28a745;
-color:white;
-border-radius:5px;
 
+
+.cta,
+.view-leaders-btn{
+display:inline-block;
+margin-top:20px;
+padding:12px 25px;
+background:#05bfdb;
+color:white;
+text-decoration:none;
+border-radius:6px;
+font-weight:600;
+transition:0.3s;
+}
+
+.cta:hover,
+.view-leaders-btn:hover{
+background:#0499b0;
+}
+
+.hero-content h1{
+font-size:55px !important;
+}
+
+.hero-content h2{
+font-size:45px !important;
+}
+
+.hero-content .motto{
+font-size:26px !important;
 }
