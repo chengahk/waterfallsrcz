@@ -501,10 +501,11 @@ background:#f7f7f7;
 .contact-donate-container{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
+gap:25px;
 max-width:1100px;
 margin:auto;
 }
+
 .contact-box,
 .donate-box{
 background:white;
@@ -813,6 +814,54 @@ margin:15px 0;
 
 .nav-links.active{
 display:flex;
+}
+
+}
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:34px;
+line-height:1.2;
+}
+
+.hero h2{
+font-size:22px;
+}
+
+.motto{
+font-size:16px;
+}
+
+.hero-logo{
+width:90px;
+}
+
+}
+
+
+@media (max-width:768px){
+
+.contact-donate-container{
+grid-template-columns:1fr;
+}
+
+.contact-box,
+.donate-box{
+width:100%;
+}
+
+}
+
+@media (max-width:768px){
+
+.contact-donate-container{
+grid-template-columns:1fr;
+}
+
+.contact-box,
+.donate-box{
+width:100%;
 }
 
 }
