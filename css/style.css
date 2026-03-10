@@ -970,15 +970,127 @@ grid-template-columns:1fr;
 
 /* FOOTER */
 
-.container{
-flex-direction:row;
-justify-content:space-between;
-align-items:center;
-}
+
 
 .footer-container{
 grid-template-columns:1fr;
 text-align:center;
+}
+
+}
+
+@media (max-width:768px){
+
+/* GLOBAL SIZE REDUCTION */
+
+body{
+font-size:50%;
+}
+
+/* HEADER */
+
+.logo img{
+height:50px;
+}
+
+.church-name{
+font-size:12px;
+}
+
+/* NAVIGATION */
+
+nav ul li a{
+font-size:12px;
+}
+
+/* HERO */
+
+.hero{
+min-height:60vh;
+padding:10px;
+}
+
+.hero-content h1{
+font-size:28px !important;
+}
+
+.hero-content h2{
+font-size:18px !important;
+}
+
+.hero-content .motto{
+font-size:12px !important;
+}
+
+.hero-logo{
+width:70px;
+}
+
+/* SECTIONS */
+
+.welcome,
+.events,
+.k,
+.location,
+.leadership,
+.ministries-preview,
+.sermon,
+.gallery,
+.stats,
+.contact-donate{
+padding:40px 10px;
+}
+
+/* CARDS */
+
+.card{
+padding:15px;
+}
+
+.cards{
+gap:12px;
+}
+
+/* PASTOR CARD */
+
+.pastor-card{
+width:260px;
+padding:20px;
+}
+
+.pastor-card img{
+width:160px;
+height:160px;
+}
+
+/* LEADERS */
+
+.leader-card img{
+width:80px;
+height:80px;
+}
+
+/* STATS */
+
+.stat{
+padding:15px;
+}
+
+.stat h3{
+font-size:20px;
+}
+
+/* CONTACT + DONATION */
+
+.contact-box,
+.donate-box{
+padding:18px;
+}
+
+/* FOOTER */
+
+.footer-bottom{
+font-size:11px;
 }
 
 }
