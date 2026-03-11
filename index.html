@@ -48,11 +48,6 @@
 <li><a href="#location">Contact</a></li>
 
 </ul>
-<div class="menu-toggle">
-<span></span>
-<span></span>
-<span></span>
-</div>
 </nav>
 
 </div>
@@ -488,12 +483,12 @@ and serving our community.
 </footer>
 <script>
 
-const menuToggle = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.onclick = function(){
 navLinks.classList.toggle("active");
-});
+};
 
 </script>
 </body>

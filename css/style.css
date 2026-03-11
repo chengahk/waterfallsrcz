@@ -1343,3 +1343,13 @@ grid-template-columns:repeat(4,1fr);
 gap:25px;
 margin-top:40px;
 }
+
+/* FIX LEADER GRID FOR PHONES */
+@media (max-width:768px){
+
+.leader-grid{
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+}
+
+}
