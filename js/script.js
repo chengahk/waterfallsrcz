@@ -126,16 +126,9 @@ faders.forEach(fader => {
 appearOnScroll.observe(fader);
 });
 
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-navMenu.classList.toggle('active');
-});
-
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.onclick = function(){
 navLinks.classList.toggle("active");
-});
+};
