@@ -131,4 +131,5 @@ const navLinks = document.getElementById("nav-links");
 
 menuToggle.onclick = function(){
 navLinks.classList.toggle("active");
+menuToggle.classList.toggle("active");
 };
