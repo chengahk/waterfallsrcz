@@ -12,6 +12,8 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -66,30 +68,35 @@ Announcements comming soon
 
 <section id="home" class="hero">
 
-<div class="hero-slider">
+  <div class="hero-slider">
+    <div class="slide active" style="background-image:url('images/church.jpg')"></div>
+    <div class="slide" style="background-image:url('images/gallery1.jpg')"></div>
+    <div class="slide" style="background-image:url('images/gallery2.jpg')"></div>
+    <div class="slide" style="background-image:url('images/gallery3.jpg')"></div>
+  </div>
 
-<div class="slide active" style="background-image:url('images/church.jpg')"></div>
-<div class="slide" style="background-image:url('images/gallery1.jpg')"></div>
-<div class="slide" style="background-image:url('images/gallery2.jpg')"></div>
-<div class="slide" style="background-image:url('images/gallery3.jpg')"></div>
+  <!-- DARK OVERLAY -->
+  <div class="hero-overlay"></div>
 
-</div>
+  <div class="hero-content fade">
 
-<div class="hero-content fade">
-<img src="images/logo.png" class="hero-logo" alt="Church Logo">
+    <img src="images/logo.png" class="hero-logo" alt="Church Logo">
 
-<h1>REFORMED CHURCH IN ZIMBABWE</h1>
+    <h1>Reformed Church in Zimbabwe</h1>
+    <h2>Waterfalls Congregation</h2>
 
-<h2>WATERFALLS CONGREGATION</h2>
+    <p class="motto">
+      Rise Up in Faith. Grow in Purpose. Walk in Truth.
+    </p>
 
-<p class="motto">LET US RISE UP, BUILD AND STRENGTHEN OUR HANDS<BR>FOR THE WORK OF THE LORD</p>
+    <div class="hero-buttons">
+      <a href="#welcome" class="btn-primary">Discover Our Church</a>
+      <a href="#contact" class="btn-secondary">Visit Us</a>
+    </div>
 
-<a href="#welcome" class="cta">Discover Our Church</a>
-
-</div>
+  </div>
 
 </section>
-
 
 
 <section id="welcome" class="welcome fade">
@@ -109,6 +116,52 @@ our community with love and humility.
 </section>
 
 
+<section id="welcome" class="about fade">
+
+  <div class="container-column">
+
+    <h2>About Our Church</h2>
+
+    <p class="about-intro">
+      We are a Christ-centered congregation committed to faith, fellowship,
+      and spiritual growth. Our calling is to build lives, strengthen families,
+      and impact our community through the love of Christ.
+    </p>
+
+    <div class="about-grid">
+
+      <div class="about-card fade">
+        <i class="fas fa-cross icon"></i>
+        <h3>Our Mission</h3>
+        <p>
+          To nurture a Christ-centered community that grows in faith,
+          strengthens fellowship, and serves others with love.
+        </p>
+      </div>
+
+      <div class="about-card fade">
+        <i class="fas fa-eye icon"></i>
+        <h3>Our Vision</h3>
+        <p>
+          To be a spiritually vibrant congregation that transforms lives
+          and raises disciples committed to God's Kingdom.
+        </p>
+      </div>
+
+      <div class="about-card fade">
+        <i class="fas fa-heart icon"></i>
+        <h3>Our Core Values</h3>
+        <p>
+          Christ-Centered Living, Faith & Prayer, Love & Unity,
+          Service, Discipleship, and Integrity.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
 <section id="ministries" class="ministries-preview fade">
 
@@ -184,7 +237,7 @@ our community with love and humility.
 
 </section>
 
-<section id="k" class="stats fade">
+<section id="stats" class="stats fade">
 
 <h2>Our Church in Numbers</h2>
 
@@ -213,6 +266,7 @@ our community with love and humility.
 </div>
 
 </section>
+
 
 <section id="sermon" class="sermon fade">
 
@@ -477,14 +531,112 @@ and serving our community.
 </div>
 
 </footer>
+
+
+
 <script>
 
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
+const header = document.querySelector(".header");
 
-menuToggle.onclick = function(){
-navLinks.classList.toggle("active");
+/* MENU TOGGLE */
+menuToggle.onclick = () => {
+  navLinks.classList.toggle("active");
+  menuToggle.classList.toggle("active");
 };
+
+/* CLOSE MENU ON CLICK */
+document.querySelectorAll("#nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuToggle.classList.remove("active");
+  });
+});
+
+/* HEADER SCROLL EFFECT */
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* SCROLL SPY */
+const sections = document.querySelectorAll("section");
+const navItems = document.querySelectorAll("#nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+
+    if (window.pageYOffset >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navItems.forEach(link => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+/* FADE-IN */
+const faders = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+faders.forEach(el => observer.observe(el));
+
+/* COUNTER ANIMATION */
+document.addEventListener("DOMContentLoaded", () => {
+
+  const counters = document.querySelectorAll(".counter");
+  const statsSection = document.getElementById("stats");
+
+  let hasCounted = false;
+
+  function animateCounters() {
+    counters.forEach(counter => {
+      const target = +counter.getAttribute("data-target");
+      let count = 0;
+
+      function update() {
+        const increment = target / 60;
+
+        if (count < target) {
+          count += increment;
+          counter.innerText = "+" + Math.ceil(count);
+          requestAnimationFrame(update);
+        } else {
+          counter.innerText = "+" + target;
+        }
+      }
+
+      update();
+    });
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!statsSection || hasCounted) return;
+
+    const rect = statsSection.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight - 100) {
+      animateCounters();
+      hasCounted = true;
+    }
+  });
+
+});
 
 </script>
 </body>
