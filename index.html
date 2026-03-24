@@ -14,9 +14,12 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
+
+  <div class="scroll-progress"></div>
 
 <header class="header">
 
@@ -104,23 +107,24 @@ Announcements comming soon
 <div class="container-column">
 
 <h2>WELCOME TO OUR CHURCH</h2>
-
-<p>
-We are a Christ centered congregation committed to faith, fellowship and spiritual growth.
-Our mission is to help believers grow deeper in their relationship with Christ while serving
-our community with love and humility.
+<p class="about-intro">
+Welcome to the Reformed Church in Zimbabwe – Waterfalls Congregation.
+We are a Christ-centered family committed to nurturing faith,
+building strong relationships, and transforming lives through the
+Word of God and the power of community.
 </p>
-
 </div>
 
 </section>
+
+<div class="section-divider"></div>
 
 
 <section id="welcome" class="about fade">
 
   <div class="container-column">
 
-    <h2>About Our Church</h2>
+    <h2>Who We Are</h2>
 
     <p class="about-intro">
       We are a Christ-centered congregation committed to faith, fellowship,
@@ -431,13 +435,18 @@ loading="lazy">
       <p><strong>Address:</strong> Waterfalls, Harare, Zimbabwe</p>
       <p><strong>Phone:</strong> +263 780 380 229</p>
       <p><strong>Email:</strong> info@waterfallscong.com</p>
+<form action="https://formspree.io/f/https://formspree.io/f/mbdznzeb" method="POST" class="contact-form">
 
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+  <button type="submit">Send Message</button>
+
+</form>
+<p id="form-status"></p>
     </div>
 
 
@@ -639,5 +648,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 </script>
+<a href="https://wa.me/263780380229?text=Hello%20I%20would%20like%20to%20know%20more%20about%20the%20church"
+   class="whatsapp-float"
+   target="_blank">
+   <i class="fab fa-whatsapp"></i>
+</a>
 </body>
 </html>

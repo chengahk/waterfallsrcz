@@ -117,3 +117,63 @@ window.addEventListener("scroll", () => {
     counted = true;
   }
 });
+
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+
+  document.querySelector(".scroll-progress").style.width = progress + "%";
+});
+
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    const sectionHeight = section.clientHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+
+const hero = document.querySelector(".hero");
+
+window.addEventListener("scroll", () => {
+  let offset = window.scrollY;
+  hero.style.backgroundPositionY = offset * 0.5 + "px";
+});
+
+const form = document.querySelector(".contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  if (response.ok) {
+    status.innerHTML = "✅ Message sent successfully!";
+    form.reset();
+  } else {
+    status.innerHTML = "❌ Oops! Something went wrong.";
+  }
+});
