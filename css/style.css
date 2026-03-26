@@ -3197,3 +3197,6 @@ section::before {
 
 }
 
+html{
+  scroll-behavior: smooth;
+}
