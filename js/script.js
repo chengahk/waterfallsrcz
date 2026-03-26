@@ -177,3 +177,6 @@ form.addEventListener("submit", async function(e) {
     status.innerHTML = "❌ Oops! Something went wrong.";
   }
 });
+
+menuToggle.classList.toggle("active");
+navLinks.classList.toggle("active");
