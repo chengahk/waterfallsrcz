@@ -246,7 +246,27 @@ Word of God and the power of community.
 
 </div>
 
+<br>
+<div class="calendar-section">
+
+    <!-- Toggle Button -->
+    <button id="toggleCalendarBtn" class="calendar-btn">
+        View Full Church Calendar
+    </button>
+
+    <!-- Hidden Calendar -->
+    <div id="calendarWrapper" class="calendar-hidden">
+        <iframe 
+            src="https://calendar.google.com/calendar/embed?src=3b76b7411a77838e4376e0bf503955564911917b00c9c19113c8ed1e66aba053%40group.calendar.google.com&ctz=Africa/Harare&mode=MONTH&showTitle=0&showTabs=0&showPrint=0"
+            frameborder="0"
+            scrolling="no">
+        </iframe>
+    </div>
+
+
 </section>
+
+<div></div>
 
 <section id="stats" class="stats fade">
 
@@ -307,79 +327,74 @@ Word of God and the power of community.
 <p>The Church Council provides spiritual oversight and leadership to the congregation.</p>
 <br>
 <br>
-<!-- SENIOR PASTOR -->
 <div class="lead-pastor">
 
-<div class="leader-card pastor-card">
-<img src="images/pastor.png">
-<br>
-<h3>Rev. Tabarira</h3>
+    <div class="pastor-card">
+        <img src="images/pastor.png" alt="Pastor">
+
+        <div class="pastor-role">Congregation Pastor</div>
+
+        <div class="pastor-info">
+            <h3>Rev Tabarira</h3>
+            <p>Leading the congregation with vision and dedication</p>
+        </div>
+    </div>
 
 </div>
-
-</div>
-
 
 <!-- OTHER COUNCIL MEMBERS -->
 <div class="leader-grid">
 
-<div class="leader-card">
+<!--<div class="leader-card">
 <img src="images/rep1.jpeg">
 <h3>Mrs Musk</h3>
 <p>Council Secretary</p>
-</div>
+</div>-->
 
-<div class="leader-card">
-<img src="images/rep2.jpeg">
-<h3>Mr Rog</h3>
-<p>Central Deacon</p>
-</div>
+        <div class="leader-card">
+            <img src="images/rep1.jpeg" alt="Mrs Musk">
+            <div class="leader-info">
+                <h3>Mrs Musk</h3>
+                <p>Council Secretary</p>
+            </div>
+        </div>
 
-<div class="leader-card">
-<img src="images/rep3.jpeg">
-<h3>Mrs Cutter</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
+        <div class="leader-card">
+            <img src="images/rep2.jpeg" alt="Mr Rog">
+            <div class="leader-info">
+                <h3>Mr Rog</h3>
+                <p>Central Deacon</p>
+            </div>
+        </div>
 
-<div class="leader-card">
-<img src="images/rep4.jpg">
-<h3>Mr Segg</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
+        <div class="leader-card">
+            <img src="images/rep3.jpeg" alt="Mrs Cutter">
+            <div class="leader-info">
+                <h3>Mrs Cutter</h3>
+                <p>Mainway Gate 1 Rep</p>
+            </div>
+        </div>
 
-<div class="leader-card">
-<img src="images/rep5.jpg">
-<h3>Mr Holder</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
+        <div class="leader-card">
+            <img src="images/rep4.jpg" alt="Mr Segg">
+            <div class="leader-info">
+                <h3>Mr Segg</h3>
+                <p>Mainway Gate 1 Rep</p>
+            </div>
+        </div>
 
-<div class="leader-card">
-<img src="images/rep6.jpg">
-<h3>Mr Hasg</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
-
-<div class="leader-card">
-<img src="images/rep7.jpg">
-<h3>Mr Sell</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
-
-<div class="leader-card">
-<img src="images/rep8.jpg">
-<h3>Mr Touch</h3>
-<p>Mainway Gate 1 Rep</p>
-</div>
-
-
-<br>
-
-
+    </div>
+    <br>
+    <br>
+    <br>
+    
 <div class="leadership-more">
 
 <a href="leadership.html" class="view-leaders-btn">View All Ministry Leaders</a>
 
 </div>
+</section>
+
 
 </section>
 
@@ -651,6 +666,9 @@ document.addEventListener("DOMContentLoaded", () => {
    class="whatsapp-float"
    target="_blank">
    <i class="fab fa-whatsapp"></i>
+  
 </a>
+
+
 </body>
 </html>
