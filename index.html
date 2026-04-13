@@ -343,14 +343,10 @@ Word of God and the power of community.
 </div>
 
 <!-- OTHER COUNCIL MEMBERS -->
-<div class="leader-grid">
 
-<!--<div class="leader-card">
-<img src="images/rep1.jpeg">
-<h3>Mrs Musk</h3>
-<p>Council Secretary</p>
-</div>-->
 
+<div class="leaders-container leaders-top">
+  <div class="carousel-dots">
         <div class="leader-card">
             <img src="images/rep1.jpeg" alt="Mrs Musk">
             <div class="leader-info">
@@ -382,7 +378,7 @@ Word of God and the power of community.
                 <p>Mainway Gate 1 Rep</p>
             </div>
         </div>
-
+</div>
     </div>
     <br>
     <br>
@@ -661,6 +657,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+const container = document.querySelector('.leaders-top');
+const cards = document.querySelectorAll('.leaders-top .leader-card');
+const dotsContainer = document.querySelector('.carousel-dots');
+
+let currentIndex = 0;
+let autoScrollInterval;
+
+/* ===== CREATE DOTS ===== */
+cards.forEach((_, index) => {
+    const dot = document.createElement('span');
+    dot.addEventListener('click', () => scrollToCard(index));
+    dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll('span');
+
+/* ===== UPDATE ACTIVE CARD (ZOOM EFFECT) ===== */
+function updateActiveCard(){
+    const containerRect = container.getBoundingClientRect();
+    const containerCenter = containerRect.left + containerRect.width / 2;
+
+    cards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+
+        const distance = Math.abs(containerCenter - cardCenter);
+
+        if(distance < cardRect.width / 2){
+            card.classList.add('active');
+        } else {
+            card.classList.remove('active');
+        }
+    });
+}
+
+/* ===== SCROLL TO CARD ===== */
+function scrollToCard(index){
+    const card = cards[index];
+
+    container.scrollTo({
+        left: card.offsetLeft - (container.offsetWidth / 2 - card.offsetWidth / 2),
+        behavior: 'smooth'
+    });
+
+    currentIndex = index;
+    updateDots();
+}
+
+/* ===== UPDATE DOTS ===== */
+function updateDots(){
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex].classList.add('active');
+}
+
+/* ===== AUTO SCROLL ===== */
+function startAutoScroll(){
+    autoScrollInterval = setInterval(() => {
+        currentIndex++;
+
+        if(currentIndex >= cards.length){
+            currentIndex = 0;
+        }
+
+        scrollToCard(currentIndex);
+    }, 3000);
+}
+
+/* ===== EVENTS ===== */
+container.addEventListener('scroll', updateActiveCard);
+container.addEventListener('touchstart', () => clearInterval(autoScrollInterval));
+container.addEventListener('touchend', startAutoScroll);
+
+/* ===== INIT ===== */
+window.addEventListener('load', () => {
+    updateDots();
+    updateActiveCard(); // 🔥 THIS WAS MISSING
+    startAutoScroll();
+});
 </script>
 <a href="https://wa.me/263780380229?text=Hello%20I%20would%20like%20to%20know%20more%20about%20the%20church"
    class="whatsapp-float"

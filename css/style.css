@@ -358,8 +358,97 @@ transition:0.3s;
 transform:scale(1.05);
 }
 
+/* LEADERSHIP */
 
+.lead-pastor{
+    display: flex;
+    justify-content: center;
+    margin: 80px 0;
+}
 
+/* Featured Pastor Card */
+.pastor-card{
+    position: relative;
+    width: 400px;
+    height: 550px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+/* Image */
+.pastor-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+/* Gradient Overlay */
+.pastor-card::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55%;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        rgba(3,83,157,0.5),
+        transparent
+    );
+}
+
+/* Text */
+.pastor-info{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    z-index: 2;
+}
+
+.pastor-info h3{
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.pastor-info p{
+    margin: 5px 0 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* Small label (clean version of your old tag) */
+.pastor-role{
+    position: absolute;
+    top: 5px;
+    left: 130px;
+    background: linear-gradient(135deg, #03539d, #0371d7);
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    z-index: 2;
+}
+
+/* Hover effect */
+.pastor-card:hover img{
+    transform: scale(1.08);
+}
+
+.leader-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:40px;
+}
 
 /* SECTION */
 .leaders-section{
@@ -409,7 +498,7 @@ transform:scale(1.05);
     height: 50%;
     background: linear-gradient(
         to top,
-        rgba(0,0,0,1),
+        rgba(0,0,0,0.95),
         rgba(3,83,157,0.7),
         transparent
     );
@@ -445,9 +534,41 @@ transform:scale(1.05);
 .leader-card:hover{
     transform: translateY(-5px);
     transition: 0.3s;
+}
 
-    
-}/* LIGHTBOX */
+/* PAGE BACKGROUND */
+.leaders-page{
+    padding: 60px 5%;
+    background: linear-gradient(to bottom, #0f2f3a, #0c252e);
+    min-height: 100vh;
+}
+
+/* HEADER */
+.leaders-header{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.leaders-header h1{
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.leaders-header p{
+    color: #ccc;
+    font-size: 16px;
+}
+
+/* GRID (same but tighter control) */
+.leaders-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+
+/* LIGHTBOX */
 
 #lightbox{
 position:fixed;
@@ -729,20 +850,21 @@ text-align:center;
 }
 
 
+
 .cta,
 .view-leaders-btn {
     display: block;
-    width: fit-content;   /* 🔥 keeps it small */
-    margin: 20px auto;    /* 🔥 centers it */
+    margin: 20px auto 0 auto; /* top 20px, auto horizontal = center */
     padding: 12px 25px;
     background: linear-gradient(#03539d, #0371d7);
     color: white;
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
-    text-align: center;
+    text-align: center; /* make sure text is centered */
     transition: 0.3s;
 }
+
 .cta:hover,
 .view-leaders-btn:hover{
 background:linear-gradient(#000000, #041eb0)
@@ -920,9 +1042,6 @@ text-align:center;
 
 /* GLOBAL SIZE REDUCTION */
 
-body{
-font-size:50%;
-}
 
 /* HEADER */
 
@@ -1497,6 +1616,7 @@ width:100%;
 }
 
 /* MOBILE */
+
 @media (max-width:768px) {
   .mission-grid {
     grid-template-columns: 1fr;
@@ -1569,7 +1689,6 @@ width:100%;
   margin: 0 auto 40px;
 }
 
-/* DESKTOP GRID */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1596,36 +1715,14 @@ width:100%;
   color: #f4b400;
 }
 
-/* MOBILE SLIDER */
+/* MOBILE */
+
 @media (max-width:768px) {
-
   .about-grid {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .about-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .about-card {
-    min-width: 85%;
-    flex: 0 0 auto;
-    scroll-snap-align: center;
-  }
-
-  .about::after {
-    content: "Swipe →";
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    opacity: 0.7;
+    grid-template-columns: 1fr;
   }
 }
+
 .hero {
   position: relative;
   height: 100vh;
@@ -2049,7 +2146,6 @@ section{
 .leadership {
   background: linear-gradient(135deg, #0d1b2a, #0f5a6b);
   color: white;
-  
 }
 
 .leader-card {
@@ -3361,6 +3457,118 @@ body.menu-open{
   height: 100vh;
 }
 
+.view-leaders-btn{
+    display: block;
+    width: fit-content;
+    margin: 40px auto;
+    padding: 14px 30px;
+    background: linear-gradient(135deg, #03539d, #0371d7);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.view-leaders-btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(3,83,157,0.5);
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+@media (max-width: 768px){
+
+    /* Lead Pastor Section */
+    .lead-pastor{
+        margin: 40px 0;
+        padding: 0 15px;
+    }
+
+.pastor-card{
+    width: 100%;
+    max-width: 350px;
+    height: 500px;
+}
+
+    .pastor-role{
+        left: 50%;
+        transform: translateX(-50%);
+        top: 10px;
+        font-size: 10px;
+        padding: 5px 12px;
+    }
+
+    .pastor-info h3{
+        font-size: 20px;
+    }
+
+    .pastor-info p{
+        font-size: 14px;
+    }
+
+    /* Leader Grid */
+    .leader-grid{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Leaders Container */
+ .leaders-container{
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+    .leaders-top{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+}
+
+    /* Leader Cards */
+    .leader-card img{
+        height: 200px;
+        width: 200px;
+    }
+
+    .leader-info h3{
+        font-size: 16px;
+    }
+
+    .leader-info p{
+        font-size: 13px;
+    }
+
+    /* Section Title */
+    .section-title{
+        font-size: 26px;
+    }
+
+    .leaders-header h1{
+        font-size: 28px;
+    }
+
+    .leaders-header p{
+        font-size: 14px;
+    }
+
+
+.pastor-card img,
+.leader-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.lead-pastor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+}
+
 .calendar-section{
     text-align: center;
     padding: 40px 20px;
@@ -3407,248 +3615,85 @@ body.menu-open{
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Hidden by default */
-.calendar-hidden{
-    display: none;
-}
+@media (max-width: 768px){
 
-/* Show state */
-.calendar-show{
-    display: block;
-    margin-top: 20px;
-}
-
-/* iframe styling */
-#calendarWrapper iframe{
-    width: 100%;
-    height: 600px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-/* Smooth fade */
-.calendar-show iframe{
-    animation: fadeIn 0.4s ease-in-out;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity: 0;
-        transform: translateY(-10px);
+    .leaders-top{
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 10px 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
     }
-    to{
-        opacity: 1;
-        transform: translateY(0);
+
+    .leaders-top::-webkit-scrollbar{
+        display: none;
+    }
+
+    .leaders-top .leader-card{
+        min-width: 220px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
     }
 }
 
-.calendar-btn{
-    background: linear-gradient(135deg, #03539d, #0371d7);
-    color: white;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
+@media (max-width: 768px){
 
-.calendar-btn:hover{
-    transform: translateY(-2px) scale(1.02);
-}
-
-/* BUTTON */
-.calendar-btn{
-    background: linear-gradient(135deg, #03539d, #0371d7);
-    color: white;
-    border: none;
-    padding: 14px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.calendar-btn:hover{
-    transform: scale(1.05);
-}
-
-/* MODAL BACKDROP */
-.calendar-modal{
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(5px);
-    justify-content: center;
-    align-items: center;
-}
-
-/* MODAL CONTENT */
-.calendar-modal-content{
-    width: 90%;
-    max-width: 1000px;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    animation: scaleIn 0.3s ease;
-}
-
-/* IFRAME */
-.calendar-modal-content iframe{
-    width: 100%;
-    height: 600px;
-    border: none;
-}
-
-/* CLOSE BUTTON */
-.close-btn{
-    position: absolute;
-    top: 15px;
-    right: 25px;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-}
-
-/* ANIMATION */
-@keyframes scaleIn{
-    from{
-        transform: scale(0.8);
-        opacity: 0;
+    .leaders-top .leader-card{
+        min-width: 160px;   /* ↓ smaller width */
+        max-width: 160px;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
     }
-    to{
-        transform: scale(1);
-        opacity: 1;
+
+    .leaders-top .leader-card img{
+        height: 180px;  /* ↓ reduce height */
     }
+
+    .leaders-top{
+    padding-left: 15px;
 }
 
-/* PAGE BACKGROUND */
-.leaders-page{
-    padding: 60px 5%;
-    background: linear-gradient(to bottom, #0f2f3a, #0c252e);
-    min-height: 100vh;
+/* Default state (small cards) */
+.leaders-top .leader-card{
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
 }
 
-/* HEADER */
-.leaders-header{
-    text-align: center;
-    margin-bottom: 50px;
+/* Active (centered) card */
+.leaders-top .leader-card.active{
+    transform: scale(1.1);
 }
 
-.leaders-header h1{
-    color: #fff;
-    font-size: 36px;
-    margin-bottom: 10px;
+/* Smooth scroll */
+.leaders-top{
+    scroll-behavior: smooth;
 }
 
-.leaders-header p{
-    color: #ccc;
-    font-size: 16px;
-}
-
-/* GRID (same but tighter control) */
-.leaders-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.back-btn{
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #fff;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.lead-pastor{
+/* Dots container */
+.carousel-dots{
     display: flex;
     justify-content: center;
-    margin: 80px 0;
+    gap: 8px;
+    margin-top: 15px;
 }
 
-/* Featured Pastor Card */
-.pastor-card{
-    position: relative;
-    width: 500px;
-    height: 420px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+/* Each dot */
+.carousel-dots span{
+    width: 8px;
+    height: 8px;
+    background: #777;
+    border-radius: 50%;
+    transition: 0.3s;
     cursor: pointer;
 }
 
-/* Image */
-.pastor-card img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+/* Active dot */
+.carousel-dots span.active{
+    background: #0371d7;
+    transform: scale(1.3);
 }
-
-/* Gradient Overlay */
-.pastor-card::after{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 55%;
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,0.9),
-        rgba(3,83,157,0.6),
-        transparent
-    );
+.leader-card.active{
+    transform: scale(1.12);
 }
-
-/* Text */
-.pastor-info{
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    z-index: 2;
-}
-
-.pastor-info h3{
-    margin: 0;
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.pastor-info p{
-    margin: 5px 0 0;
-    font-size: 15px;
-    opacity: 0.9;
-}
-
-.pastor-role{
-    position: absolute;
-    top: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(5, 22, 255, 0.6);
-    backdrop-filter: blur(6px);
-    color: #fff;
-    padding: 6px 16px;
-    font-size: 11px;
-    border-radius: 20px;
-    z-index: 2;
-}
-
-/* Hover effect */
-.pastor-card:hover img{
-    transform: scale(1.08);
-}
-
-.pastor-card{
-    width: 400px;
-    height: 450px;
 }
