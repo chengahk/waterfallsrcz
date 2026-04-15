@@ -443,12 +443,6 @@ transform:scale(1.05);
     transform: scale(1.08);
 }
 
-.leader-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px;
-margin-top:40px;
-}
 
 /* SECTION */
 .leaders-section{
@@ -465,12 +459,6 @@ margin-top:40px;
 }
 
 /* GRID */
-.leaders-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
 /* CARD */
 .leader-card{
     position: relative;
@@ -561,11 +549,6 @@ margin-top:40px;
 }
 
 /* GRID (same but tighter control) */
-.leaders-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
 
 
 /* LIGHTBOX */
@@ -2870,22 +2853,8 @@ section::before {
 
 }
 
-/* DESKTOP */
-.leader-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-  margin-top:40px;
-}
-
 /* MOBILE - CLEAN 4 PER ROW */
 @media (max-width:768px){
-
-  .leader-grid{
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-
   .leader-card{
     padding: 10px;
   }
@@ -3510,10 +3479,6 @@ body.menu-open{
     }
 
     /* Leader Grid */
-    .leader-grid{
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
 
     /* Leaders Container */
  .leaders-container{
@@ -3696,4 +3661,283 @@ body.menu-open{
 .leader-card.active{
     transform: scale(1.12);
 }
+}
+
+/* =========================
+   LEADERSHIP SECTION
+========================= */
+
+/* SECTION */
+.leaders-section{
+    padding: 60px 5%;
+    background: #0f2f3a;
+}
+
+/* TITLE */
+.section-title{
+    text-align: center;
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+/* =========================
+   DESKTOP GRID
+========================= */
+.leaders-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.leader-card{
+    position: relative;
+    border-radius: 12px;
+    width: 200px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* IMAGE */
+.leader-card img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* GRADIENT */
+.leader-card::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.95),
+        rgba(3,83,157,0.7),
+        transparent
+    );
+}
+
+/* TEXT */
+.leader-info{
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    z-index: 2;
+}
+
+.leader-info h3{
+    margin: 0;
+    font-size: 18px;
+}
+
+.leader-info p{
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+/* HOVER */
+.leader-card:hover{
+    transform: translateY(-5px);
+}
+
+/* =========================
+   MOBILE CAROUSEL
+========================= */
+@media (max-width: 768px){
+
+    /* Turn into swipe carousel */
+    .leaders-top{
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding: 10px 15px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .leaders-top::-webkit-scrollbar{
+        display: none;
+    }
+
+    /* Cards */
+    .leaders-top .leader-card{
+        min-width: 160px;
+        max-width: 160px;
+        flex: 0 0 auto;
+        scroll-snap-align: center;
+
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+
+    /* Active zoom */
+    .leaders-top .leader-card.active{
+        transform: scale(1.08);
+    }
+
+    /* Image smaller */
+    .leaders-top .leader-card img{
+        height: 180px;
+    }
+}
+
+
+/* Grid */
+.leaders-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;   /* keeps grid contained */
+  margin: 0 auto;      /* centers grid */
+}
+
+/* Card */
+.leader-new {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #123b47;
+  transition: 0.3s;
+}
+
+/* Image */
+.leader-new img {
+  width: 100%;
+  height: 200px;       /* smaller height for readability */
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Gradient Overlay */
+.leader-new::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.95),
+    rgba(3,83,157,0.6),
+    transparent
+  );
+}
+
+/* Text Overlay */
+.leader-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: #fff;
+  z-index: 2;
+}
+
+.leader-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.leader-info p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Hover */
+.leader-new:hover img {
+  transform: scale(1.08);
+}
+/* Section Background */
+.leadership-new {
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, #0f2f3a, #0c252e); /* restored gradient */
+  text-align: center;
+}
+
+.leadership-new h2 {
+  color: #fff;
+}
+
+.leadership-new p {
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* Grid */
+.leaders-new {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;   /* keeps grid contained */
+  margin: 0 auto;      /* centers grid */
+}
+
+/* Card */
+.leader-new {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #123b47;
+  transition: 0.3s;
+}
+
+/* Image */
+.leader-new img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Gradient Overlay */
+.leader-new::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.95),
+    rgba(3,83,157,0.6),
+    transparent
+  );
+}
+
+/* Text Overlay */
+.leader-info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: #fff;
+  z-index: 2;
+}
+
+.leader-info h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.leader-info p {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Hover */
+.leader-new:hover img {
+  transform: scale(1.08);
 }
