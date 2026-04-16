@@ -3895,7 +3895,7 @@ body.menu-open{
 /* Image */
 .leader-new img {
   width: 100%;
-  height: 220px;
+  height: 280px;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
@@ -3910,8 +3910,8 @@ body.menu-open{
   height: 60%;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.95),
-    rgba(3,83,157,0.6),
+    rgba(0,0,0,1),
+    rgba(3,83,157,0.75),
     transparent
   );
 }
@@ -3921,7 +3921,7 @@ body.menu-open{
   position: absolute;
   bottom: 15px;
   left: 15px;
-  color: #fff;
+  color:#d4af37;
   z-index: 2;
 }
 
@@ -4001,7 +4001,7 @@ body.menu-open{
 
 /* HEADER */
 .leadership-header h1 {
-    color: #fff;
+    color:#d4af37;
     font-size: 34px;
     margin-bottom: 10px;
 }
@@ -4098,7 +4098,7 @@ body.menu-open{
     }
 
     .leadership-header h1 {
-        font-size: 26px;
+        font-size: 30px;
     }
 
     .leadership-overlay h3 {
@@ -4125,5 +4125,227 @@ body.menu-open{
 
   .leader-card img {
     height: 170px;
+  }
+}
+
+
+
+.department-title{
+  color:#ffffff;
+    font-size: 34px;
+    margin-bottom: 10px;
+
+}
+/* =========================
+   ENHANCED DEPARTMENT HEADER
+========================= */
+
+.department-header {
+    margin: 50px 0 25px;
+    text-align: left;
+}
+
+/* Title */
+.department-header h2 {
+    background: linear-gradient(to right, #ffffff, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+/* Accent line */
+.department-line {
+    width: 30%;
+    max-width: 200px;
+    min-width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #0371d7, #d4af37);
+    border-radius: 5px;
+}
+
+.department-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+/* =========================
+   ABOUT SECTION (NEW DESIGN)
+========================= */
+
+.about-section {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0f5a6b, #0d1b2a);
+}
+
+/* CONTAINER GRID */
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* CARD */
+.about-card {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  text-align: left;
+  color: #fff;
+  transition: 0.3s;
+}
+
+/* TITLE */
+.about-card h2 {
+  color: #f4b400;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.about-card p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* HOVER */
+.about-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.15);
+}
+
+/* =========================
+   MOBILE (PERFECT LAYOUT)
+========================= */
+
+
+ @media (max-width:768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+  .about-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .about-card h2 {
+    font-size: 18px;
+  }
+
+  .about-card p {
+    font-size: 13px;
+  }
+
+.about-card {
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width:768px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 5px;
+  }
+
+  .about-card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+}
+
+/* =========================
+   ABOUT V2 (NO CONFLICT VERSION)
+========================= */
+
+.about-v2 {
+  padding: 60px 15px;
+  background: linear-gradient(135deg, #0f5a6b, #0d1b2a);
+}
+
+/* CONTAINER */
+.about-v2-container {
+  display: grid;
+  grid-template-columns: 1fr; /* MOBILE FIRST */
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.about-v2-card {
+  background: rgba(255,255,255,0.08);
+  padding: 22px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  color: #fff;
+  text-align: left;
+
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  transition: all 0.3s ease;
+
+  min-height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* HOVER */
+.about-v2-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.15);
+}
+
+/* TITLE */
+.about-v2-card h2 {
+  font-size: 18px;
+  color: #f4b400;
+  margin-bottom: 10px;
+}
+
+/* TEXT */
+.about-v2-card p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================
+   TABLET (2 COLUMNS)
+========================= */
+
+@media (min-width: 600px) {
+  .about-v2-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   DESKTOP (2 COLUMNS CLEAN)
+========================= */
+
+@media (min-width: 1024px) {
+  .about-v2-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-v2-card {
+    padding: 28px;
+  }
+
+  .about-v2-card h2 {
+    font-size: 20px;
+  }
+
+  .about-v2-card p {
+    font-size: 15px;
   }
 }
