@@ -4349,3 +4349,115 @@ body.menu-open{
     font-size: 15px;
   }
 }
+
+/* =========================
+   ABOUT SECTION (FIXED + MODERN)
+========================= */
+
+.about {
+  padding: 60px 15px;
+  background: linear-gradient(135deg, #0f5a6b, #0d1b2a);
+  color: #fff;
+  text-align: center;
+}
+
+/* Container */
+.container-column {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Intro text */
+.about-intro {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #ccc;
+}
+
+/* =========================
+   GRID (MOBILE FIRST)
+========================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* =========================
+   CARD (CLEAN VERSION)
+========================= */
+
+.about-card {
+  background: rgba(255,255,255,0.08);
+  padding: 22px;
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  transition: all 0.3s ease;
+
+  text-align: center;
+}
+
+/* Hover */
+.about-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.15);
+}
+
+/* Icon */
+.about-card .icon {
+  font-size: 26px;
+  color: #f4b400;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.about-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.about-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* =========================
+   TABLET (2 COLUMNS)
+========================= */
+
+@media (min-width: 600px) {
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   DESKTOP (3 COLUMNS)
+========================= */
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about-card {
+    padding: 28px;
+  }
+
+  .about-card h3 {
+    font-size: 20px;
+  }
+
+  .about-card p {
+    font-size: 15px;
+  }
+}
