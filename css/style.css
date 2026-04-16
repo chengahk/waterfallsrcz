@@ -3988,3 +3988,124 @@ body.menu-open{
     font-size: 12px;
   }
 }
+
+/* =========================
+   LEADERSHIP DIRECTORY PAGE
+========================= */
+
+.leadership-directory {
+    padding: 60px 5%;
+    background: linear-gradient(to bottom, #0f2f3a, #0c252e);
+    text-align: center;
+}
+
+/* HEADER */
+.leadership-header h1 {
+    color: #fff;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.leadership-header p {
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* CARD */
+.leadership-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #123b47;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+/* IMAGE */
+.leadership-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* GRADIENT OVERLAY */
+.leadership-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.95),
+        rgba(3,83,157,0.6),
+        transparent
+    );
+}
+
+/* TEXT */
+.leadership-overlay {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: #fff;
+    z-index: 2;
+}
+
+.leadership-overlay h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.leadership-overlay p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* HOVER EFFECT */
+.leadership-card:hover {
+    transform: translateY(-5px);
+}
+
+.leadership-card:hover img {
+    transform: scale(1.08);
+}
+
+/* =========================
+   MOBILE FIX (2 PER ROW)
+========================= */
+@media (max-width: 768px) {
+
+    .leadership-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .leadership-card img {
+        height: 170px;
+    }
+
+    .leadership-header h1 {
+        font-size: 26px;
+    }
+
+    .leadership-overlay h3 {
+        font-size: 14px;
+    }
+
+    .leadership-overlay p {
+        font-size: 12px;
+    }
+}
