@@ -4109,3 +4109,21 @@ body.menu-open{
         font-size: 12px;
     }
 }
+
+@media (max-width: 768px) {
+
+  .leaders-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+
+  .leader-card {
+    width: 100% !important;
+  }
+
+  .leader-card img {
+    height: 170px;
+  }
+}
