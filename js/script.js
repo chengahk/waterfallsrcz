@@ -413,3 +413,54 @@ if (form && status) {
 }
 
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("toggleCalendarBtn");
+    const calendar = document.getElementById("calendarWrapper");
+
+    btn.addEventListener("click", () => {
+
+        // toggle visibility properly
+        calendar.classList.toggle("calendar-show");
+        calendar.classList.toggle("calendar-hidden");
+
+        // update button text
+        if(calendar.classList.contains("calendar-show")){
+            btn.textContent = "Hide Calendar";
+            calendar.scrollIntoView({ behavior: "smooth" });
+        } else {
+            btn.textContent = "View Full Church Calendar";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const openBtn = document.getElementById("openCalendarBtn");
+    const modal = document.getElementById("calendarModal");
+    const closeBtn = document.getElementById("closeCalendarBtn");
+
+    openBtn.addEventListener("click", () => {
+        modal.style.display = "flex";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    // Close when clicking outside
+    window.addEventListener("click", (e) => {
+        if(e.target === modal){
+            modal.style.display = "none";
+        }
+    });
+
+});
+
+document.addEventListener("keydown", (e) => {
+    if(e.key === "Escape"){
+        modal.style.display = "none";
+    }
+});
+
