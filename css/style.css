@@ -4548,8 +4548,8 @@ body.menu-open{
 }
 
 .gallery-card img {
-    width: 100%;
-    height: 260px;
+    width: 20%;
+    height: 160px;
     object-fit: cover;
     transition: 0.5s ease;
     border-radius: 15px;
@@ -4600,21 +4600,21 @@ body.menu-open{
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr); /* 6 per row */
+    grid-template-columns: repeat(4, 1fr); /* 6 per row */
     gap: 15px;
 }
 
 /* Tablets */
 @media (max-width: 1024px) {
     .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 /* Phones */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
