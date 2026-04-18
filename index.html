@@ -371,12 +371,14 @@ Word of God and the power of community.
 <img src="images/g2.jpeg" class="gallery-img">
 <img src="images/g3.jpeg" class="gallery-img">
 <img src="images/g5.jpeg" class="gallery-img">
-<img src="images/g6.jpeg" class="gallery-img">
-<img src="images/g7.jpeg" class="gallery-img">
-<img src="images/g9.jpeg" class="gallery-img">
-<img src="images/g10.jpeg" class="gallery-img">
+
 
 </div>
+
+
+  <div class="leadership-more">
+    <a href="gallery.html" class="view-leaders-btn">View Gallery</a>
+  </div>
 
 </section>
 
@@ -721,6 +723,22 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+const images = document.querySelectorAll(".gallery-img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeBtn = document.querySelector(".close");
+
+images.forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "block";
+        lightboxImg.src = img.src;
+    });
+});
+
+closeBtn.onclick = () => {
+    lightbox.style.display = "none";
+};
 
 </script>
 <a href="https://wa.me/263780380229?text=Hello%20I%20would%20like%20to%20know%20more%20about%20the%20church"
