@@ -173,47 +173,40 @@ Word of God and the power of community.
 
 </section>
 
-<section id="ministries" class="ministries-preview fade">
+<section id="ministries" class="ministries-v2 fade">
 
-<h2>Our Ministries</h2>
+  <h2 class="ministries-title">Our Ministries</h2>
 
-<div class="cards">
+  <div class="ministries-carousel">
 
-<div class="card glass">
-<h3>Men's Fellowship</h3>
-<p>Equipping men with faith, courage and wisdom to serve God faithfully.</p>
-</div>
+    <div class="ministries-item">
+      <h3>Men's Fellowship</h3>
+      <p>Equipping men with faith, courage and wisdom to serve God faithfully.</p>
+    </div>
 
+    <div class="ministries-item">
+      <h3>Women's Fellowship</h3>
+      <p>Uniting women in prayer, purpose and strength through God's unfailing love.</p>
+    </div>
 
-<div class="card">
-<h3>Women's Fellowship</h3>
-<p>Uniting women in prayer, purpose and strength through God's unfailing love.</p>
-</div>
+    <div class="ministries-item">
+      <h3>Boys' Fellowship</h3>
+      <p>Strengthening character and guiding boys to grow faithfully in God.</p>
+    </div>
 
-<div class="card">
-<h3>Boys' Fellowship</h3>
-<p>Strengthening character, guiding boys to grow as faithful men of God.</p>
-</div>
+    <div class="ministries-item">
+      <h3>Girls' Fellowship</h3>
+      <p>Nurturing faith and building confidence in their walk with God.</p>
+    </div>
 
-<div class="card">
-<h3>Girls' Fellowship</h3>
-<p>Nurturing faith, building confidence, inspiring girls to walk with God.</p>
-</div>
+     <div class="ministries-item">
+      <h3>Girls' Fellowship</h3>
+      <p>Nurturing faith and building confidence in their walk with God.</p>
+    </div>
 
-<div class="card">
-<h3>Youth Ministry</h3>
-<p>Empowering you hearts to lead, serve, and shine boldly in Christ.</p>
-</div>
-
-<div class="card">
-<h3>Sunday School Ministry</h3>
-<p>Teaching truth, shaping lives, planting seeds of faith for tomorrow' s generation.</p>
-</div>
-
-</div>
+  </div>
 
 </section>
-
 
 
 <section id="events" class="events fade">
@@ -738,7 +731,58 @@ closeBtn.onclick = () => {
     lightbox.style.display = "none";
 };
 
+
 </script>
+
+<script>
+const carousel = document.querySelector('.ministries-carousel');
+
+// Clone items automatically
+const originalItems = Array.from(carousel.children);
+
+originalItems.forEach(item => {
+  const clone = item.cloneNode(true);
+  carousel.appendChild(clone);
+});
+
+// Start in the middle
+carousel.scrollLeft = carousel.scrollWidth / 2;
+
+carousel.addEventListener('scroll', () => {
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+  if (carousel.scrollLeft <= 0) {
+    carousel.scrollLeft = maxScroll / 2;
+  }
+
+  if (carousel.scrollLeft >= maxScroll) {
+    carousel.scrollLeft = maxScroll / 2;
+  }
+});
+</script>
+
+<script>
+const items = document.querySelectorAll('.ministries-item');
+
+function highlightCenterCard() {
+  const center = carousel.scrollLeft + carousel.offsetWidth / 2;
+
+  document.querySelectorAll('.ministries-item').forEach(item => {
+    const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+    const distance = Math.abs(center - itemCenter);
+
+    if (distance < item.offsetWidth / 2) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+carousel.addEventListener('scroll', highlightCenterCard);
+window.addEventListener('load', highlightCenterCard);
+</script>
+
 <a href="https://wa.me/263780380229?text=Hello%20I%20would%20like%20to%20know%20more%20about%20the%20church"
    class="whatsapp-float"
    target="_blank">
