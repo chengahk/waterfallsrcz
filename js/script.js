@@ -1,466 +1,391 @@
-/* ========================= */
-/* FADE-IN ANIMATION (CLEAN) */
-/* ========================= 
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll(".fade, .about-card").forEach(el => {
-  observer.observe(el);
-});
-
-
-/* ========================= */
-/* HERO SLIDER */
-/* ========================= 
-
-const slides = document.querySelectorAll(".slide");
-let slideIndex = 0;
-
-function showNextSlide() {
-  slides[slideIndex].classList.remove("active");
-  slideIndex = (slideIndex + 1) % slides.length;
-  slides[slideIndex].classList.add("active");
-}
-
-setInterval(showNextSlide, 5000);
-
-
-/* ========================= */
-/* MOBILE MENU */
-/* ========================= 
-
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
-
-menuToggle.onclick = () => {
-  navLinks.classList.toggle("active");
-  menuToggle.classList.toggle("active");
-};
-
-
-/* ========================= */
-/* HEADER SCROLL EFFECT */
-/* ========================= 
-
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 50);
-});
-
-
-/* ========================= */
-/* LIGHTBOX */
-/* ========================= 
-
-const images = document.querySelectorAll(".gallery-img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.getElementById("close");
-
-images.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
-  });
-});
-
-closeBtn.onclick = () => {
-  lightbox.style.display = "none";
-};
-
-
-/* ========================= */
-/* COUNTER (ON SCROLL) */
-/* =========================
-
-const counters = document.querySelectorAll(".counter");
-const statsSection = document.getElementById("stats");
-
-let counted = false;
-
-function runCounters() {
-  counters.forEach(counter => {
-    const target = +counter.getAttribute("data-target");
-    let count = 0;
-
-    function update() {
-      const increment = target / 80;
-
-      if (count < target) {
-        count += increment;
-        counter.innerText = Math.ceil(count);
-        requestAnimationFrame(update);
-      } else {
-        counter.innerText = target;
-      }
-    }
-
-    update();
-  });
-}
-
-window.addEventListener("scroll", () => {
-  if (!statsSection || counted) return;
-
-  const rect = statsSection.getBoundingClientRect();
-
-  if (rect.top < window.innerHeight - 100) {
-    runCounters();
-    counted = true;
-  }
-});
-
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-
-  document.querySelector(".scroll-progress").style.width = progress + "%";
-});
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    const sectionHeight = section.clientHeight;
-
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-});
-
-const hero = document.querySelector(".hero");
-
-window.addEventListener("scroll", () => {
-  let offset = window.scrollY;
-  hero.style.backgroundPositionY = offset * 0.5 + "px";
-});
-
-const form = document.querySelector(".contact-form");
-const status = document.getElementById("form-status");
-
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-  const response = await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  });
-
-  if (response.ok) {
-    status.innerHTML = "✅ Message sent successfully!";
-    form.reset();
-  } else {
-    status.innerHTML = "❌ Oops! Something went wrong.";
-  }
-});
-
-menuToggle.classList.toggle("active");
-navLinks.classList.toggle("active"); */
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-/* ========================= */
-/* FADE-IN ANIMATION */
-/* ========================= */
+  /* =========================
+     ELEMENTS
+  ========================= */
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
+  const header = document.querySelector(".header");
+  const progressBar = document.querySelector(".scroll-progress");
 
-document.querySelectorAll(".fade, .about-card").forEach(el => {
-  observer.observe(el);
-});
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  const sections = document.querySelectorAll("section");
+  const navItems = document.querySelectorAll(".nav-links a");
+
+  const slides = document.querySelectorAll(".slide");
+
+  const fadeElements = document.querySelectorAll(".fade, .about-card");
+
+  const counters = document.querySelectorAll(".counter");
+  const statsSection = document.getElementById("stats");
+
+  const galleryImages = document.querySelectorAll(".gallery-item img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.getElementById("close");
+
+  const form = document.querySelector(".contact-form");
+  const status = document.getElementById("form-status");
+
+  const toggleCalendarBtn = document.getElementById("toggleCalendarBtn");
+  const calendarWrapper = document.getElementById("calendarWrapper");
+
+  const ministriesCarousel = document.querySelector(".ministries-carousel");
 
 
-/* ========================= */
-/* HERO SLIDER */
-/* ========================= */
+  /* =========================
+     HERO SLIDER
+  ========================= */
 
-const slides = document.querySelectorAll(".slide");
-let slideIndex = 0;
+  if (slides.length > 0) {
 
-if (slides.length > 0) {
-  setInterval(() => {
-    slides[slideIndex].classList.remove("active");
-    slideIndex = (slideIndex + 1) % slides.length;
-    slides[slideIndex].classList.add("active");
-  }, 5000);
-}
+    let currentSlide = 0;
+
+    setInterval(() => {
+
+      slides[currentSlide].classList.remove("active");
+
+      currentSlide = (currentSlide + 1) % slides.length;
+
+      slides[currentSlide].classList.add("active");
+
+    }, 5000);
+
+  }
 
 
-/* ========================= */
-/* MOBILE MENU */
-/* ========================= */
+  /* =========================
+     MOBILE MENU
+  ========================= */
 
-const menu = document.querySelector(".nav-links");
-const hamburger = document.querySelector(".hamburger");
+  if (menuToggle && navLinks) {
 
-if (hamburger && menu) {
-  hamburger.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("active");
+    menuToggle.addEventListener("click", () => {
 
-    if (isOpen) {
-      document.body.classList.add("menu-open");
-    } else {
-      document.body.classList.remove("menu-open");
-    }
-  });
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("active");
 
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
-      document.body.classList.remove("menu-open");
+      document.body.classList.toggle("menu-open");
+
     });
-  });
-}
 
+    navItems.forEach(link => {
 
-/* ========================= */
-/* HEADER SCROLL EFFECT */
-/* ========================= */
+      link.addEventListener("click", () => {
 
-const header = document.querySelector(".header");
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("active");
 
-if (header) {
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 50);
-  });
-}
+        document.body.classList.remove("menu-open");
 
+      });
 
-/* ========================= */
-/* LIGHTBOX */
-/* ========================= */
-
-const images = document.querySelectorAll(".gallery-img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const closeBtn = document.getElementById("close");
-
-if (images.length && lightbox && lightboxImg && closeBtn) {
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
     });
-  });
 
-  closeBtn.onclick = () => {
-    lightbox.style.display = "none";
-  };
-}
+  }
 
 
-/* ========================= */
-/* COUNTER */
-/* ========================= */
+  /* =========================
+     FADE-IN OBSERVER
+  ========================= */
 
-const counters = document.querySelectorAll(".counter");
-const statsSection = document.getElementById("stats");
+  const observer = new IntersectionObserver((entries) => {
 
-let counted = false;
+    entries.forEach(entry => {
 
-function runCounters() {
-  counters.forEach(counter => {
-    const target = +counter.getAttribute("data-target");
-    let count = 0;
+      if (entry.isIntersecting) {
 
-    function update() {
-      const increment = target / 80;
+        entry.target.classList.add("show");
 
-      if (count < target) {
-        count += increment;
-        counter.innerText = Math.ceil(count);
-        requestAnimationFrame(update);
-      } else {
-        counter.innerText = target;
+        observer.unobserve(entry.target);
+
       }
-    }
 
-    update();
-  });
-}
-
-if (statsSection) {
-  window.addEventListener("scroll", () => {
-    if (counted) return;
-
-    const rect = statsSection.getBoundingClientRect();
-
-    if (rect.top < window.innerHeight - 100) {
-      runCounters();
-      counted = true;
-    }
-  });
-}
-
-
-/* ========================= */
-/* SCROLL PROGRESS */
-/* ========================= */
-
-const progressBar = document.querySelector(".scroll-progress");
-
-if (progressBar) {
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-
-    progressBar.style.width = progress + "%";
-  });
-}
-
-
-/* ========================= */
-/* ACTIVE NAV LINK */
-/* ========================= */
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 120;
-    const sectionHeight = section.clientHeight;
-
-    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href").includes(current)) {
-      link.classList.add("active");
-    }
-  });
-});
-
-
-/* ========================= */
-/* PARALLAX HERO */
-/* ========================= */
-
-const hero = document.querySelector(".hero");
-
-if (hero) {
-  window.addEventListener("scroll", () => {
-    let offset = window.scrollY;
-    hero.style.backgroundPositionY = offset * 0.5 + "px";
-  });
-}
-
-
-/* ========================= */
-/* CONTACT FORM */
-/* ========================= */
-
-const form = document.querySelector(".contact-form");
-const status = document.getElementById("form-status");
-
-if (form && status) {
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
     });
 
-    if (response.ok) {
-      status.innerHTML = "✅ Message sent successfully!";
-      form.reset();
-    } else {
-      status.innerHTML = "❌ Oops! Something went wrong.";
-    }
+  }, {
+    threshold: 0.15
   });
-}
 
-});
+  fadeElements.forEach(el => observer.observe(el));
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("toggleCalendarBtn");
-    const calendar = document.getElementById("calendarWrapper");
+  /* =========================
+     COUNTER ANIMATION
+  ========================= */
 
-    btn.addEventListener("click", () => {
+  let counterStarted = false;
 
-        // toggle visibility properly
-        calendar.classList.toggle("calendar-show");
-        calendar.classList.toggle("calendar-hidden");
+  function startCounters() {
 
-        // update button text
-        if(calendar.classList.contains("calendar-show")){
-            btn.textContent = "Hide Calendar";
-            calendar.scrollIntoView({ behavior: "smooth" });
+    if (counterStarted) return;
+
+    counterStarted = true;
+
+    counters.forEach(counter => {
+
+      const target = +counter.dataset.target;
+
+      let current = 0;
+
+      const increment = target / 60;
+
+      function updateCounter() {
+
+        current += increment;
+
+        if (current < target) {
+
+          counter.innerText = Math.ceil(current);
+
+          requestAnimationFrame(updateCounter);
+
         } else {
-            btn.textContent = "View Full Church Calendar";
+
+          counter.innerText = target;
+
         }
+
+      }
+
+      updateCounter();
+
     });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+  }
 
-    const openBtn = document.getElementById("openCalendarBtn");
-    const modal = document.getElementById("calendarModal");
-    const closeBtn = document.getElementById("closeCalendarBtn");
 
-    openBtn.addEventListener("click", () => {
-        modal.style.display = "flex";
+  /* =========================
+     LIGHTBOX
+  ========================= */
+
+  if (galleryImages.length && lightbox && lightboxImg && closeBtn) {
+
+    galleryImages.forEach(img => {
+
+      img.addEventListener("click", () => {
+
+        lightbox.style.display = "flex";
+
+        lightboxImg.src = img.src;
+
+      });
+
     });
 
     closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
+
+      lightbox.style.display = "none";
+
     });
 
-    // Close when clicking outside
-    window.addEventListener("click", (e) => {
-        if(e.target === modal){
-            modal.style.display = "none";
+    lightbox.addEventListener("click", (e) => {
+
+      if (e.target === lightbox) {
+
+        lightbox.style.display = "none";
+
+      }
+
+    });
+
+  }
+
+
+  /* =========================
+     CONTACT FORM
+  ========================= */
+
+  if (form && status) {
+
+    form.addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      try {
+
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (response.ok) {
+
+          status.innerHTML = "✅ Message sent successfully!";
+          form.reset();
+
+        } else {
+
+          status.innerHTML = "❌ Something went wrong.";
+
         }
+
+      } catch (error) {
+
+        status.innerHTML = "❌ Network error.";
+
+      }
+
     });
 
-});
+  }
 
-document.addEventListener("keydown", (e) => {
-    if(e.key === "Escape"){
-        modal.style.display = "none";
+
+  /* =========================
+     CALENDAR TOGGLE
+  ========================= */
+
+  if (toggleCalendarBtn && calendarWrapper) {
+
+    toggleCalendarBtn.addEventListener("click", () => {
+
+      calendarWrapper.classList.toggle("calendar-show");
+      calendarWrapper.classList.toggle("calendar-hidden");
+
+      const isVisible =
+        calendarWrapper.classList.contains("calendar-show");
+
+      toggleCalendarBtn.textContent = isVisible
+        ? "Hide Calendar"
+        : "View Full Church Calendar";
+
+      if (isVisible) {
+
+        calendarWrapper.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    });
+
+  }
+
+
+  /* =========================
+     MINISTRIES SCROLL SNAP
+  ========================= */
+
+  if (ministriesCarousel) {
+
+    ministriesCarousel.style.scrollBehavior = "smooth";
+
+  }
+
+
+  /* =========================
+     OPTIMIZED SCROLL HANDLER
+  ========================= */
+
+  let ticking = false;
+
+  function handleScroll() {
+
+    const scrollY = window.scrollY;
+
+
+    /* HEADER EFFECT */
+
+    if (header) {
+
+      header.classList.toggle("scrolled", scrollY > 50);
+
     }
-});
 
+
+    /* PROGRESS BAR */
+
+    if (progressBar) {
+
+      const docHeight =
+        document.body.scrollHeight - window.innerHeight;
+
+      const progress = (scrollY / docHeight) * 100;
+
+      progressBar.style.width = progress + "%";
+
+    }
+
+
+    /* ACTIVE NAV */
+
+    let currentSection = "";
+
+    sections.forEach(section => {
+
+      const sectionTop = section.offsetTop - 140;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        scrollY >= sectionTop &&
+        scrollY < sectionTop + sectionHeight
+      ) {
+
+        currentSection = section.getAttribute("id");
+
+      }
+
+    });
+
+    navItems.forEach(link => {
+
+      link.classList.remove("active");
+
+      if (
+        link.getAttribute("href") === `#${currentSection}`
+      ) {
+
+        link.classList.add("active");
+
+      }
+
+    });
+
+
+    /* COUNTERS */
+
+    if (statsSection && !counterStarted) {
+
+      const rect = statsSection.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight - 100) {
+
+        startCounters();
+
+      }
+
+    }
+
+    ticking = false;
+
+  }
+
+
+  window.addEventListener("scroll", () => {
+
+    if (!ticking) {
+
+      requestAnimationFrame(handleScroll);
+
+      ticking = true;
+
+    }
+
+  }, {
+    passive: true
+  });
+
+
+  /* =========================
+     INITIAL RUN
+  ========================= */
+
+  handleScroll();
+
+});
