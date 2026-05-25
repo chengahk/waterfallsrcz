@@ -10,6 +10,17 @@ overflow-x:hidden;
 width:100%;
 }
 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  min-width: 0;
+}
+
 body{
 font-family:'Poppins',sans-serif;
 background:#f4f7fa;
@@ -4735,24 +4746,58 @@ body.menu-open{
 /* ========================= */
 
 @media (max-width: 768px) {
-  .ministries-item {
-    min-width: 220px;
-    max-width: 220px;
-    padding: 20px;
+
+  body {
+    overflow-x: hidden;
   }
 
-  .ministries-carousel {
+  section {
+    padding: 70px 20px;
+  }
+
+  .church-name {
+    font-size: 1.3rem;
+    line-height: 1.15;
+    max-width: 220px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.6rem;
+    line-height: 1.08;
+  }
+  
+  
+
+  .events-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .events-grid {
+    grid-template-columns: 1fr 1fr;
     gap: 14px;
   }
+
+  .event-card {
+    padding: 22px 14px;
+  }
+
+  .ministries-item {
+    min-width: 240px;
+    max-width: 240px;
+  }
+
 }
 
+
 .ministries-carousel {
+  width: 100%;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  overflow-y: hidden;
 }
 
 .ministries-item {
-  scroll-snap-align: center;
+  flex-shrink: 0;
 }
 
 
@@ -4760,7 +4805,142 @@ body.menu-open{
 
 
 
+/* =========================================
+   EVENTS SECTION
+========================================= */
+/* =========================================
+   EVENTS SECTION
+========================================= */
+
+.events-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.event-box {
+
+  position: relative;
+
+  padding: 24px 20px;
+
+  border-radius: 22px;
+
+  background: #1a1a1a;
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+
+  overflow: hidden;
+
+}
+
+.event-box::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.04),
+      transparent
+    );
+
+  pointer-events: none;
+
+}
+
+.event-box:hover {
+
+  transform: translateY(-6px);
+
+  border-color: rgba(255,255,255,0.12);
+
+  box-shadow:
+    0 14px 28px rgba(0,0,0,0.35);
+
+}
+
+.event-box h3 {
+
+  font-size: 1.35rem;
+
+  margin-bottom: 8px;
+
+  line-height: 1.2;
+
+}
+
+.event-box p {
+
+  font-size: 0.96rem;
+
+  opacity: 0.8;
+
+  line-height: 1.5;
+
+}
 
 
+/* =========================================
+   MOBILE EVENTS
+========================================= */
 
+@media (max-width: 768px) {
 
+  .events-cards {
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-top: 28px;
+
+  }
+
+  .event-box {
+
+    padding: 16px 14px;
+
+    border-radius: 18px;
+
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.24);
+
+  }
+
+  .event-box:hover {
+
+    transform: none;
+
+  }
+
+  .event-box h3 {
+
+    font-size: 1.05rem;
+
+    margin-bottom: 4px;
+
+  }
+
+  .event-box p {
+
+    font-size: 0.88rem;
+
+    line-height: 1.3;
+
+  }
+
+}
