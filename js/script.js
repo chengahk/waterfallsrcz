@@ -376,6 +376,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+  /* =========================
+   ABOUT CARDS SNAP EFFECT
+========================= */
+
+const aboutGrid = document.querySelector(".about-grid");
+
+if (aboutGrid) {
+
+  const aboutCards =
+    aboutGrid.querySelectorAll(".about-card");
+
+  function updateActiveAboutCard() {
+
+    const center =
+      aboutGrid.scrollLeft +
+      aboutGrid.offsetWidth / 2;
+
+    aboutCards.forEach(card => {
+
+      const cardCenter =
+        card.offsetLeft + card.offsetWidth / 2;
+
+      const distance =
+        Math.abs(center - cardCenter);
+
+      if (distance < card.offsetWidth / 2) {
+
+        card.classList.add("active");
+
+      } else {
+
+        card.classList.remove("active");
+
+      }
+
+    });
+
+  }
+
+  aboutGrid.addEventListener(
+    "scroll",
+    updateActiveAboutCard,
+    { passive: true }
+  );
+
+  updateActiveAboutCard();
+
+}
 
   /* =========================
      OPTIMIZED SCROLL HANDLER
