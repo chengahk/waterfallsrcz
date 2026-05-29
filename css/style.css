@@ -5292,11 +5292,11 @@ transition:
   .site-notice{
     font-size:9px;
     padding:7px 10px;
-    line-height:1.4;
+    line-height:1;
   }
 
   .announcement-bar{
-    padding:10px 0;
+    padding:5px 0;
   }
 
   .announcement-track{
@@ -5304,7 +5304,7 @@ transition:
   }
 
   .announcement-track span{
-    font-size:12px;
+    font-size:11px;
     padding-right:50px;
     letter-spacing:0.3px;
   }
