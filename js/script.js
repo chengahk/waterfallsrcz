@@ -415,10 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
      ABOUT MOBILE CAROUSEL
   ========================= */
 
-  if (
-    aboutGrid &&
-    window.innerWidth <= 768
-  ) {
+  if (aboutGrid && window.innerWidth <= 768) {
 
     const aboutCards =
       aboutGrid.querySelectorAll(".about-card");
@@ -427,29 +424,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateActiveAboutCard() {
 
-      const containerCenter =
-        aboutGrid.getBoundingClientRect().left +
+      const center =
+        aboutGrid.scrollLeft +
         aboutGrid.offsetWidth / 2;
 
       let closestCard = null;
-
       let closestDistance = Infinity;
 
       aboutCards.forEach(card => {
 
-        const rect =
-          card.getBoundingClientRect();
-
         const cardCenter =
-          rect.left + rect.width / 2;
+          card.offsetLeft +
+          card.offsetWidth / 2;
 
         const distance =
-          Math.abs(containerCenter - cardCenter);
+          Math.abs(center - cardCenter);
 
         if (distance < closestDistance) {
 
           closestDistance = distance;
-
           closestCard = card;
 
         }
@@ -457,15 +450,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       aboutCards.forEach(card => {
-
         card.classList.remove("active");
-
       });
 
       if (closestCard) {
-
         closestCard.classList.add("active");
-
       }
 
     }
@@ -478,7 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateActiveAboutCard();
 
-      }, 100);
+      }, 80);
 
     }, {
       passive: true

@@ -591,26 +591,41 @@ font-size:40px;
 cursor:pointer;
 }
 
-/* ANNOUNCEMENT BAR */
+/* =========================
+   CONTINUOUS ANNOUNCEMENT MARQUEE
+========================= */
 
 .announcement-bar{
-background: linear-gradient(187deg, #db6c05,#0f5a6b);
-color:white;
-overflow:hidden;
-white-space:nowrap;
+  background: linear-gradient(187deg, #db6c05, #0f5a6b);
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 12px 0;
 }
 
-.announcement-bar p{
-display:inline-block;
-padding:10px 0;
-animation:scrollText 18s linear infinite;
-font-weight:600;
+.announcement-track{
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
 }
 
-@keyframes scrollText{
-0%{transform:translateX(100%);}
-100%{transform:translateX(-100%);}
+.announcement-track span{
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
+  padding-right: 80px; /* spacing between repeats */
+  font-size: 15px;
 }
+
+@keyframes marquee{
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-50%);
+  }
+}
+
 
 /* STATS */
 
@@ -5055,39 +5070,154 @@ transition:
    ABOUT SECTION
 ========================================= */
 
-/* DESKTOP */
+.about{
+  padding:100px 20px;
+  overflow:hidden;
+}
 
 .about-grid{
 
   display:grid;
 
   grid-template-columns:
-  repeat(auto-fit, minmax(250px,1fr));
+  repeat(auto-fit,minmax(280px,1fr));
 
-  gap:25px;
+  gap:30px;
 
-}
-
-/* CARDS */
-
-.about-card{
-
-  padding:25px;
-
-  border-radius:15px;
-
-  background:var(--glass);
-
-  border:1px solid rgba(255,255,255,0.1);
-
-  transition:
-  transform 0.4s ease,
-  opacity 0.4s ease;
+  margin-top:50px;
 
 }
 
 /* =========================================
-   MOBILE CAROUSEL ONLY
+   ABOUT CARD
+========================================= */
+
+.about-card{
+
+  position:relative;
+
+  padding:35px 28px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.03)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+  overflow:hidden;
+
+  transition:
+  transform 0.4s ease,
+  opacity 0.4s ease,
+  border-color 0.4s ease;
+
+  opacity:0.85;
+
+}
+
+/* TOP GLOW */
+
+.about-card::before{
+
+  content:"";
+
+  position:absolute;
+
+  top:-80px;
+  right:-80px;
+
+  width:180px;
+  height:180px;
+
+  background:
+  radial-gradient(
+    circle,
+    rgba(58,134,255,0.18),
+    transparent 70%
+  );
+
+  pointer-events:none;
+
+}
+
+/* HOVER */
+
+.about-card:hover{
+
+  transform:
+  translateY(-8px);
+
+  border-color:
+  rgba(58,134,255,0.35);
+
+  opacity:1;
+
+}
+
+/* ICON */
+
+.about-icon{
+
+  width:65px;
+  height:65px;
+
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  margin-bottom:22px;
+
+  font-size:28px;
+
+  background:
+  linear-gradient(
+    145deg,
+    rgba(58,134,255,0.25),
+    rgba(58,134,255,0.08)
+  );
+
+  border:
+  1px solid rgba(255,255,255,0.08);
+
+}
+
+/* TITLE */
+
+.about-card h3{
+
+  font-size:24px;
+
+  margin-bottom:16px;
+
+  line-height:1.2;
+
+  color:#fff;
+
+}
+
+/* TEXT */
+
+.about-card p{
+
+  font-size:15px;
+
+  line-height:1.8;
+
+  color:
+  rgba(255,255,255,0.75);
+
+}
+
+/* =========================================
+   MOBILE
 ========================================= */
 
 @media (max-width:768px){
@@ -5096,17 +5226,17 @@ transition:
 
     display:flex;
 
-    gap:20px;
-
     overflow-x:auto;
 
-    padding:10px 5px 30px;
+    gap:18px;
 
-    scroll-snap-type:x proximity;
+    padding:10px 15px 30px;
+
+    scroll-snap-type:x mandatory;
+
+    -webkit-overflow-scrolling:touch;
 
     scrollbar-width:none;
-
-    -ms-overflow-style:none;
 
   }
 
@@ -5116,17 +5246,21 @@ transition:
 
   .about-card{
 
-    min-width:260px;
+    width:85vw;
 
-    max-width:260px;
+    max-width:340px;
 
     flex-shrink:0;
 
     scroll-snap-align:center;
 
-    opacity:0.5;
+    opacity:0.45;
 
     transform:scale(0.88);
+
+    transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
 
   }
 
@@ -5136,8 +5270,15 @@ transition:
 
     transform:scale(1);
 
-    z-index:2;
-
   }
 
+}
+
+.site-notice{
+  background:#8b0000;
+  color:white;
+  text-align:center;
+  padding:8px 15px;
+  font-size:13px;
+  font-weight:500;
 }
