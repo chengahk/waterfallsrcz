@@ -15,23 +15,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const slides = document.querySelectorAll(".slide");
 
-  const fadeElements = document.querySelectorAll(".fade, .about-card");
+  const fadeElements =
+    document.querySelectorAll(".fade, .about-card");
 
-  const counters = document.querySelectorAll(".counter");
-  const statsSection = document.getElementById("stats");
+  const counters =
+    document.querySelectorAll(".counter");
 
-  const galleryImages = document.querySelectorAll(".gallery-item img");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const closeBtn = document.getElementById("close");
+  const statsSection =
+    document.getElementById("stats");
 
-  const form = document.querySelector(".contact-form");
-  const status = document.getElementById("form-status");
+  const galleryImages =
+    document.querySelectorAll(".gallery-item img");
 
-  const toggleCalendarBtn = document.getElementById("toggleCalendarBtn");
-  const calendarWrapper = document.getElementById("calendarWrapper");
+  const lightbox =
+    document.getElementById("lightbox");
 
-  const ministriesCarousel = document.querySelector(".ministries-carousel");
+  const lightboxImg =
+    document.getElementById("lightbox-img");
+
+  const closeBtn =
+    document.getElementById("close");
+
+  const form =
+    document.querySelector(".contact-form");
+
+  const status =
+    document.getElementById("form-status");
+
+  const toggleCalendarBtn =
+    document.getElementById("toggleCalendarBtn");
+
+  const calendarWrapper =
+    document.getElementById("calendarWrapper");
+
+  const ministriesCarousel =
+    document.querySelector(".ministries-carousel");
+
+  const aboutGrid =
+    document.querySelector(".about-grid");
 
 
   /* =========================
@@ -46,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       slides[currentSlide].classList.remove("active");
 
-      currentSlide = (currentSlide + 1) % slides.length;
+      currentSlide =
+        (currentSlide + 1) % slides.length;
 
       slides[currentSlide].classList.add("active");
 
@@ -64,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", () => {
 
       menuToggle.classList.toggle("active");
+
       navLinks.classList.toggle("active");
 
       document.body.classList.toggle("menu-open");
@@ -75,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
 
         menuToggle.classList.remove("active");
+
         navLinks.classList.remove("active");
 
         document.body.classList.remove("menu-open");
@@ -87,26 +111,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================
-     FADE-IN OBSERVER
+     FADE IN OBSERVER
   ========================= */
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer =
+    new IntersectionObserver((entries) => {
 
-    entries.forEach(entry => {
+      entries.forEach(entry => {
 
-      if (entry.isIntersecting) {
+        if (entry.isIntersecting) {
 
-        entry.target.classList.add("show");
+          entry.target.classList.add("show");
 
-        observer.unobserve(entry.target);
+          observer.unobserve(entry.target);
 
-      }
+        }
 
+      });
+
+    }, {
+      threshold: 0.15
     });
-
-  }, {
-    threshold: 0.15
-  });
 
   fadeElements.forEach(el => observer.observe(el));
 
@@ -125,11 +150,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     counters.forEach(counter => {
 
-      const target = +counter.dataset.target;
+      const target =
+        +counter.dataset.target;
 
       let current = 0;
 
-      const increment = target / 60;
+      const increment =
+        target / 60;
 
       function updateCounter() {
 
@@ -137,7 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (current < target) {
 
-          counter.innerText = Math.ceil(current);
+          counter.innerText =
+            Math.ceil(current);
 
           requestAnimationFrame(updateCounter);
 
@@ -160,13 +188,19 @@ document.addEventListener("DOMContentLoaded", () => {
      LIGHTBOX
   ========================= */
 
-  if (galleryImages.length && lightbox && lightboxImg && closeBtn) {
+  if (
+    galleryImages.length &&
+    lightbox &&
+    lightboxImg &&
+    closeBtn
+  ) {
 
     galleryImages.forEach(img => {
 
       img.addEventListener("click", () => {
 
         lightbox.style.display = "flex";
+
         lightboxImg.src = img.src;
 
       });
@@ -216,18 +250,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (response.ok) {
 
-          status.innerHTML = "✅ Message sent successfully!";
+          status.innerHTML =
+            "✅ Message sent successfully!";
+
           form.reset();
 
         } else {
 
-          status.innerHTML = "❌ Something went wrong.";
+          status.innerHTML =
+            "❌ Something went wrong.";
 
         }
 
       } catch (error) {
 
-        status.innerHTML = "❌ Network error.";
+        status.innerHTML =
+          "❌ Network error.";
 
       }
 
@@ -245,14 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleCalendarBtn.addEventListener("click", () => {
 
       calendarWrapper.classList.toggle("calendar-show");
+
       calendarWrapper.classList.toggle("calendar-hidden");
 
       const isVisible =
         calendarWrapper.classList.contains("calendar-show");
 
-      toggleCalendarBtn.textContent = isVisible
-        ? "Hide Calendar"
-        : "View Full Church Calendar";
+      toggleCalendarBtn.textContent =
+        isVisible
+          ? "Hide Calendar"
+          : "View Full Church Calendar";
 
       if (isVisible) {
 
@@ -273,9 +313,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (ministriesCarousel) {
 
-    ministriesCarousel.style.scrollBehavior = "smooth";
-
-    /* DUPLICATE ITEMS FOR LOOP EFFECT */
+    ministriesCarousel.style.scrollBehavior =
+      "smooth";
 
     const originalItems =
       Array.from(ministriesCarousel.children);
@@ -288,8 +327,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /* START POSITION */
-
     requestAnimationFrame(() => {
 
       ministriesCarousel.scrollLeft =
@@ -298,8 +335,6 @@ document.addEventListener("DOMContentLoaded", () => {
       updateActiveMinistryCard();
 
     });
-
-    /* ACTIVE CENTER CARD */
 
     function updateActiveMinistryCard() {
 
@@ -313,7 +348,8 @@ document.addEventListener("DOMContentLoaded", () => {
       cards.forEach(card => {
 
         const cardCenter =
-          card.offsetLeft + card.offsetWidth / 2;
+          card.offsetLeft +
+          card.offsetWidth / 2;
 
         const distance =
           Math.abs(center - cardCenter);
@@ -331,8 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     }
-
-    /* LOOP + ACTIVE CARD */
 
     let carouselTicking = false;
 
@@ -376,54 +410,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
+
   /* =========================
-   ABOUT CARDS SNAP EFFECT
-========================= */
+     ABOUT MOBILE CAROUSEL
+  ========================= */
 
-const aboutGrid = document.querySelector(".about-grid");
+  if (
+    aboutGrid &&
+    window.innerWidth <= 768
+  ) {
 
-if (aboutGrid) {
+    const aboutCards =
+      aboutGrid.querySelectorAll(".about-card");
 
-  const aboutCards =
-    aboutGrid.querySelectorAll(".about-card");
+    let scrollTimeout;
 
-  function updateActiveAboutCard() {
+    function updateActiveAboutCard() {
 
-    const center =
-      aboutGrid.scrollLeft +
-      aboutGrid.offsetWidth / 2;
+      const containerCenter =
+        aboutGrid.getBoundingClientRect().left +
+        aboutGrid.offsetWidth / 2;
 
-    aboutCards.forEach(card => {
+      let closestCard = null;
 
-      const cardCenter =
-        card.offsetLeft + card.offsetWidth / 2;
+      let closestDistance = Infinity;
 
-      const distance =
-        Math.abs(center - cardCenter);
+      aboutCards.forEach(card => {
 
-      if (distance < card.offsetWidth / 2) {
+        const rect =
+          card.getBoundingClientRect();
 
-        card.classList.add("active");
+        const cardCenter =
+          rect.left + rect.width / 2;
 
-      } else {
+        const distance =
+          Math.abs(containerCenter - cardCenter);
+
+        if (distance < closestDistance) {
+
+          closestDistance = distance;
+
+          closestCard = card;
+
+        }
+
+      });
+
+      aboutCards.forEach(card => {
 
         card.classList.remove("active");
 
+      });
+
+      if (closestCard) {
+
+        closestCard.classList.add("active");
+
       }
 
+    }
+
+    aboutGrid.addEventListener("scroll", () => {
+
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+
+        updateActiveAboutCard();
+
+      }, 100);
+
+    }, {
+      passive: true
     });
+
+    updateActiveAboutCard();
 
   }
 
-  aboutGrid.addEventListener(
-    "scroll",
-    updateActiveAboutCard,
-    { passive: true }
-  );
-
-  updateActiveAboutCard();
-
-}
 
   /* =========================
      OPTIMIZED SCROLL HANDLER
@@ -440,7 +504,10 @@ if (aboutGrid) {
 
     if (header) {
 
-      header.classList.toggle("scrolled", scrollY > 50);
+      header.classList.toggle(
+        "scrolled",
+        scrollY > 50
+      );
 
     }
 
@@ -450,7 +517,8 @@ if (aboutGrid) {
     if (progressBar) {
 
       const docHeight =
-        document.body.scrollHeight - window.innerHeight;
+        document.body.scrollHeight -
+        window.innerHeight;
 
       const progress =
         (scrollY / docHeight) * 100;
@@ -501,14 +569,17 @@ if (aboutGrid) {
     });
 
 
-    /* COUNTER START */
+    /* COUNTERS */
 
     if (statsSection && !counterStarted) {
 
       const rect =
         statsSection.getBoundingClientRect();
 
-      if (rect.top < window.innerHeight - 100) {
+      if (
+        rect.top <
+        window.innerHeight - 100
+      ) {
 
         startCounters();
 
