@@ -5282,3 +5282,31 @@ transition:
   font-size:13px;
   font-weight:500;
 }
+
+/* =========================
+   MOBILE ANNOUNCEMENT OPTIMIZATION
+========================= */
+
+@media (max-width:768px){
+
+  .site-notice{
+    font-size:9px;
+    padding:7px 10px;
+    line-height:1.4;
+  }
+
+  .announcement-bar{
+    padding:10px 0;
+  }
+
+  .announcement-track{
+    animation-duration: 28s; /* slower = easier to read */
+  }
+
+  .announcement-track span{
+    font-size:12px;
+    padding-right:50px;
+    letter-spacing:0.3px;
+  }
+
+}
