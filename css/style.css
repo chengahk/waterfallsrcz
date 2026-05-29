@@ -5217,59 +5217,123 @@ transition:
 }
 
 /* =========================================
-   MOBILE
+   MOBILE ABOUT - CLEAN PREMIUM FLOW
 ========================================= */
 
 @media (max-width:768px){
 
-  .about-grid{
-
-    display:flex;
-
-    overflow-x:auto;
-
-    gap:18px;
-
-    padding:10px 15px 30px;
-
-    scroll-snap-type:x mandatory;
-
-    -webkit-overflow-scrolling:touch;
-
-    scrollbar-width:none;
-
+  .about{
+  padding:70px 12px;
   }
 
-  .about-grid::-webkit-scrollbar{
-    display:none;
+  .about-grid{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:28px;
   }
 
   .about-card{
 
-    width:85vw;
+    width:100%;
+    max-width:100%;
 
-    max-width:340px;
 
-    flex-shrink:0;
+    padding:24px 18px;
 
-    scroll-snap-align:center;
+    border-radius:20px;
 
-    opacity:0.45;
+    background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.08),
+      rgba(255,255,255,0.04)
+    );
 
-    transform:scale(0.88);
+    backdrop-filter:blur(10px);
 
-    transition:
-    transform 0.35s ease,
-    opacity 0.35s ease;
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+    box-shadow:
+    0 8px 24px rgba(0,0,0,0.22);
+
+    text-align:left;
+
+    overflow:hidden;
+
+    opacity:1;
+  }
+
+  /* SOFTER ACCENT */
+  .about-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:18px;
+
+    width:4px;
+    height:45px;
+
+    border-radius:4px;
+
+    background:
+    linear-gradient(
+      to bottom,
+      #ffd166,
+      #d4af37
+    );
 
   }
 
-  .about-card.active{
+  /* REMOVE BIG TOP GLOW */
+  .about-card::after{
+    display:none;
+  }
 
-    opacity:1;
+  /* ICON */
+  .about-icon{
 
-    transform:scale(1);
+    width:58px;
+    height:58px;
 
+    border-radius:16px;
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+    background:
+    linear-gradient(
+      145deg,
+      rgba(255,209,102,0.18),
+      rgba(255,209,102,0.05)
+    );
+
+    color:#ffd166;
+  }
+
+  /* TITLE */
+  .about-card h3{
+    font-size:20px;
+    margin-bottom:10px;
+    color:#fff;
+  }
+
+  /* TEXT */
+  .about-card p{
+    font-size:14px;
+    line-height:1.75;
+    color:rgba(255,255,255,0.82);
+  }
+
+  /* REMOVE STAGGER */
+  .about-card:nth-child(2),
+  .about-card:nth-child(3){
+    margin-left:0;
   }
 
 }
@@ -5310,3 +5374,4 @@ transition:
   }
 
 }
+
